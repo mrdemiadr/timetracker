@@ -1,4 +1,4 @@
-package com.example.timetracker
+package com.owlprogrammer.timetracker
 
 import io.flutter.embedding.android.FlutterActivity
 

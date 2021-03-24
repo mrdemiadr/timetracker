@@ -1,12 +1,30 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:timetracker/common_widget/custom_elevated_button.dart';
+import 'package:timetracker/app/sign_in/sign_in_button.dart';
+import 'package:timetracker/app/sign_in/social_sign_in_button.dart';
+import 'package:timetracker/services/auth.dart';
 
 class SignInPage extends StatelessWidget {
+  const SignInPage({Key key, @required this.auth, @required this.onSignIn})
+      : super(key: key);
+  final void Function(User) onSignIn;
+  final AuthBase auth;
+  Future<void> _signInAnonymously() async {
+    try {
+      final user = await auth.signInAnonymously();
+      onSignIn(user);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Time Tracker'),
+        title: Text(
+          'Time Tracker',
+        ),
         elevation: 2.0,
       ),
       body: _buildContent(),
@@ -30,32 +48,58 @@ class SignInPage extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 8.0,
+            height: 48.0,
           ),
-          CustomElevatedButton(
-            child: Text(
-              'Sign in with Google',
-              style: TextStyle(color: Colors.black54),
-            ),
+          SocialSignInButton(
+            text: 'Sign in with Google',
             color: Colors.white,
-            borderRadius: 4.0,
+            textColor: Colors.black87,
+            imageURL: 'assets/images/google-logo.png',
             onPressed: () {
-              print('Tapped');
+              print('Tapped Google');
             },
           ),
           SizedBox(
             height: 8.0,
           ),
-          CustomElevatedButton(
-            child: Text(
-              'Sign in with Facebook',
-              style: TextStyle(color: Colors.black54),
-            ),
-            color: Colors.white,
-            borderRadius: 4.0,
+          SocialSignInButton(
+            text: 'Sign in with Facebook',
+            color: Color(0xFF334D92),
+            imageURL: 'assets/images/facebook-logo.png',
             onPressed: () {
-              print('Tapped 2');
+              print('Tapped Facebook');
             },
+          ),
+          SizedBox(
+            height: 8.0,
+          ),
+          SignInButton(
+            text: 'Sign in with email',
+            textColor: Colors.white,
+            color: Colors.teal[700],
+            onPressed: () {
+              print('Tapped Email');
+            },
+          ),
+          SizedBox(
+            height: 8.0,
+          ),
+          Text(
+            'or',
+            style: TextStyle(
+              fontSize: 14.0,
+              color: Colors.black87,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(
+            height: 8.0,
+          ),
+          SignInButton(
+            text: 'Go anonymous',
+            textColor: Colors.black87,
+            color: Colors.lime[300],
+            onPressed: _signInAnonymously,
           ),
         ],
       ),

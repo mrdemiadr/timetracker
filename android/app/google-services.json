@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "236813028759",
+    "project_id": "timetracker-c6840",
+    "storage_bucket": "timetracker-c6840.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236813028759:android:4dd6376722689be5fe48d2",
+        "android_client_info": {
+          "package_name": "com.owlprogrammer.timetracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "236813028759-nim3mqcganiglptnm849uoga5k5bgco5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBInu3o8hbkfxfhhwz7Z-3K_qXSLqJrIsA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "236813028759-nim3mqcganiglptnm849uoga5k5bgco5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
